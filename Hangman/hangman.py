@@ -15,16 +15,22 @@ def singleChar():
     letter = letter.upper()
     return letter
 
-def compare(letter,word):
+def compare(letter,word,hidden):
+    counter = 0
     for i in word:
         if letter == i:
-            return "Correct"
-    return "Wrong"
+            hidden[counter]=word[counter]
+        counter= counter +1
+        
+    return hidden
 
-def printLetters(selections):
-    pass
-def counter(i):
-    pass
+def printGuess(result):
+    for i in result[0:]:
+        print (' '.join(i),end=" ")
+    
+def roundCounter(i):
+    count = len(i)
+    return count
 
 def generate(word):
     result = []
@@ -32,15 +38,16 @@ def generate(word):
         result.append("_")
     return result
 
-def printGuess(result):
-    for i in result[0:]:
-        print (' '.join(i),end=" ")
-    
-    
 
-
+    
+i = 1
+counter = roundCounter(theWord)
 hiddenWord = generate(theWord)
 printGuess(hiddenWord)
-
-guess = singleChar()
-print ("That is " + compare(guess, theWord))
+while i <= counter :
+    guess = singleChar()
+    result = compare(guess, theWord, hiddenWord)
+    printGuess(result)
+    i = i + 1
+    if i==(counter +1):
+        print("\n\nYou lose, game over!!")
