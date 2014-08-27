@@ -87,7 +87,8 @@ while True:
         break
     elif direction=='L':
         print ("\n\n\nYou are currently in the " + location[0] + ": " + location[1]+ '\n\n')        
-    location = moveTo(house,location,direction)
+    else:
+        location = moveTo(house,location,direction)
     
 
 '''
